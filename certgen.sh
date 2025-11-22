@@ -1,7 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 discord_cert_gen() {
-    echo "" | openssl s_client -showcerts -connect $1:443 2> /dev/null | sed -n "1,/Root/d; /BEGIN/,/END/p" | openssl x509 -outform PEM > "$2"
+    echo "" | openssl s_client -showcerts -connect "$1:443" 2> /dev/null | sed -n "1,/Root/d; /BEGIN/,/END/p" | openssl x509 -outform PEM > "$2"
 }
 
 discord_certs() {
